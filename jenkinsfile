@@ -7,17 +7,26 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                #echo 'Building..'
+		withMaven(maven: 'MAVEN_HOME'){
+			sh 'mvn test'
+		}
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+               # echo 'Testing..'
+		withMaven(maven: 'MAVEN_HOME'){
+                        sh 'mvn test'
+		}
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                #echo 'Deploying....'
+		withMaven(maven: 'MAVEN_HOME'){
+                        sh 'mvn test'
+		}
             }
         }
     }
